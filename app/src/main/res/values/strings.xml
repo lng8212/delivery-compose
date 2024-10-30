@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Delivery</string>
+    <string name="text_non_contact_deliveries">Non-Contact Deliveries</string>
+    <string name="text_detail_onboarding">When placing an order, select the option “Contactless delivery” and the courier will leave your order at the door.</string>
+    <string name="text_order_now">ORDER NOW</string>
+</resources>
