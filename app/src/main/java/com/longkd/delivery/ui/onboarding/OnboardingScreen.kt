@@ -1,4 +1,4 @@
-package com.longkd.delivery
+package com.longkd.delivery.ui.onboarding
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,9 +19,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.longkd.delivery.ui.theme.BackgroundOnboarding
+import com.longkd.delivery.R
+import com.longkd.delivery.ui.theme.Background
 import com.longkd.delivery.ui.theme.Onboarding
 import com.longkd.delivery.ui.theme.PrimaryButton
 import com.longkd.delivery.ui.theme.TextPrimary
@@ -34,7 +34,10 @@ import com.longkd.delivery.ui.theme.Typography
  */
 
 @Composable
-fun OnboardingScreen() {
+fun OnboardingScreen(
+    viewModel: OnBoardingViewModel,
+    onNavigateToHome: () -> Unit,
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -52,7 +55,7 @@ fun OnboardingScreen() {
                 .align(alignment = Alignment.BottomCenter)
                 .fillMaxWidth()
                 .background(
-                    color = BackgroundOnboarding,
+                    color = Background,
                     shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)
                 ),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -84,7 +87,10 @@ fun OnboardingScreen() {
                     .padding(top = 48.dp, start = 20.dp, end = 20.dp)
                     .background(PrimaryButton, shape = RoundedCornerShape(8.dp)),
                 colors = ButtonDefaults.buttonColors(containerColor = PrimaryButton),
-                onClick = {}) {
+                onClick = {
+                    viewModel.setFirstInit(false)
+                    onNavigateToHome.invoke()
+                }) {
                 Text(
                     text = stringResource(R.string.text_order_now),
                     style = Typography.bodyMedium
@@ -92,10 +98,4 @@ fun OnboardingScreen() {
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun Test() {
-    OnboardingScreen()
 }
