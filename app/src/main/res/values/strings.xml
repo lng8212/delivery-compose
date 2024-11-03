@@ -5,4 +5,10 @@
     <string name="text_order_now">ORDER NOW</string>
     <string name="text_categories">Categories</string>
     <string name="text_search">Search</string>
+    <string name="text_vegetables">Vegetables</string>
+    <string name="text_fruits">Fruits</string>
+    <string name="text_bread">Bread</string>
+    <string name="text_sweets">Sweets</string>
+    <string name="text_noodle">Noodle</string>
+    <string name="text_drinks">Drinks</string>
 </resources>

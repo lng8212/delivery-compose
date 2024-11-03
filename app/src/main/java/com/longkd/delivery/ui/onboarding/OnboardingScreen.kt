@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import com.longkd.delivery.R
 import com.longkd.delivery.ui.theme.Background
 import com.longkd.delivery.ui.theme.Onboarding
+import com.longkd.delivery.ui.theme.Primary
 import com.longkd.delivery.ui.theme.PrimaryButton
-import com.longkd.delivery.ui.theme.TextPrimary
 import com.longkd.delivery.ui.theme.TextSecondary
 import com.longkd.delivery.ui.theme.Typography
 
@@ -70,7 +70,7 @@ fun OnboardingScreen(
                     .fillMaxWidth()
                     .padding(start = 44.dp, end = 44.dp, top = 24.dp),
                 text = stringResource(R.string.text_non_contact_deliveries),
-                style = Typography.headlineLarge.copy(color = TextPrimary),
+                style = Typography.headlineLarge.copy(color = Primary),
                 textAlign = TextAlign.Center
             )
             Text(

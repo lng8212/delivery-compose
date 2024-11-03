@@ -8,7 +8,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.longkd.delivery.ui.category.CategoryScreen
+import com.longkd.delivery.ui.category.CategoryRoute
 import com.longkd.delivery.ui.onboarding.OnBoardingViewModel
 import com.longkd.delivery.ui.onboarding.OnboardingScreen
 import kotlinx.serialization.Serializable
@@ -50,7 +50,7 @@ fun App(modifier: Modifier = Modifier) {
             }
         }
         composable<Category> {
-            CategoryScreen()
+            CategoryRoute()
         }
         composable<Profile> {
 
