@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
+import com.longkd.delivery.ui.common.bottombar.DeliveryBottomNavigation
 import com.longkd.delivery.ui.theme.DeliveryTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,8 +20,14 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DeliveryTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    App(modifier = Modifier.padding(innerPadding))
+                val navController = rememberNavController()
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    bottomBar = {
+                        DeliveryBottomNavigation(navController)
+                    }
+                ) { innerPadding ->
+                    App(modifier = Modifier.padding(innerPadding), navController = navController)
                 }
             }
         }

@@ -5,9 +5,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.longkd.delivery.ui.category.CategoryRoute
 import com.longkd.delivery.ui.onboarding.OnBoardingViewModel
 import com.longkd.delivery.ui.onboarding.OnboardingScreen
@@ -18,22 +18,23 @@ import kotlinx.serialization.Serializable
  * @Since: 23:10 - 30/10/24
  */
 
-@Serializable
-object OnBoarding
+sealed class Route
 
 @Serializable
-object Category
+data object OnBoarding : Route()
 
 @Serializable
-object Card
+data object Category : Route()
 
 @Serializable
-object Profile
+data object Cart : Route()
+
+@Serializable
+data object Profile : Route()
 
 
 @Composable
-fun App(modifier: Modifier = Modifier) {
-    val navController = rememberNavController()
+fun App(modifier: Modifier = Modifier, navController: NavHostController) {
     val onBoardingViewModel: OnBoardingViewModel = hiltViewModel()
     val isFirstInit by onBoardingViewModel.isFirstInit.collectAsStateWithLifecycle()
     NavHost(
@@ -55,7 +56,7 @@ fun App(modifier: Modifier = Modifier) {
         composable<Profile> {
 
         }
-        composable<Card> {
+        composable<Cart> {
 
         }
     }
