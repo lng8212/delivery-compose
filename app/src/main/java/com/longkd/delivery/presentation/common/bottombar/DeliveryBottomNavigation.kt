@@ -1,4 +1,4 @@
-package com.longkd.delivery.ui.common.bottombar
+package com.longkd.delivery.presentation.common.bottombar
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -48,37 +48,38 @@ fun DeliveryBottomNavigation(
         BottomBarNavigationScreen.Cart,
         BottomBarNavigationScreen.Profile
     )
-    NavigationBar(containerColor = Color.White) {
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
-        screens.forEach { screen ->
-            NavigationBarItem(
-                label = {
-                },
-                icon = {
-                    Icon(
-                        tint = Color.Unspecified,
-                        painter = painterResource(
-                            id = if (currentRoute == screen.route::class.qualifiedName) screen.iconSelected else screen.icon
-                        ),
-                        contentDescription = null
-                    )
-                },
-                selected = currentRoute == screen.route::class.qualifiedName,
-                onClick = {
-                    navController.navigate(screen.route) {
-                        popUpTo(navController.graph.startDestinationId) {
-                            saveState = true
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+    if (currentRoute in screens.map { it.route::class.qualifiedName })
+        NavigationBar(containerColor = Color.White) {
+            screens.forEach { screen ->
+                NavigationBarItem(
+                    label = {
+                    },
+                    icon = {
+                        Icon(
+                            tint = Color.Unspecified,
+                            painter = painterResource(
+                                id = if (currentRoute == screen.route::class.qualifiedName) screen.iconSelected else screen.icon
+                            ),
+                            contentDescription = null
+                        )
+                    },
+                    selected = currentRoute == screen.route::class.qualifiedName,
+                    onClick = {
+                        navController.navigate(screen.route) {
+                            popUpTo(navController.graph.startDestinationId) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                            restoreState = true
                         }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
-                },
+                    },
 
-                colors = NavigationBarItemDefaults.colors(
-                    indicatorColor = Color.Transparent
+                    colors = NavigationBarItemDefaults.colors(
+                        indicatorColor = Color.Transparent
+                    )
                 )
-            )
+            }
         }
-    }
 }

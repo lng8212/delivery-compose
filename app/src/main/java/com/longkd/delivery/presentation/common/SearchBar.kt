@@ -1,4 +1,4 @@
-package com.longkd.delivery.ui.common
+package com.longkd.delivery.presentation.common
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -19,8 +19,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.longkd.delivery.R
-import com.longkd.delivery.ui.theme.TextSecondary
-import com.longkd.delivery.ui.theme.Typography
+import com.longkd.delivery.presentation.theme.TextSecondary
+import com.longkd.delivery.presentation.theme.Typography
 
 /**
  * @Author: longkd

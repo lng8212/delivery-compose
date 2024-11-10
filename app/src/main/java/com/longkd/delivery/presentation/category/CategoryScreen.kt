@@ -1,8 +1,9 @@
-package com.longkd.delivery.ui.category
+package com.longkd.delivery.presentation.category
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -25,18 +26,17 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.longkd.delivery.R
 import com.longkd.delivery.domain.Category
-import com.longkd.delivery.ui.common.SearchBar
-import com.longkd.delivery.ui.theme.Background
-import com.longkd.delivery.ui.theme.Border
-import com.longkd.delivery.ui.theme.Primary
-import com.longkd.delivery.ui.theme.TextSecondary
-import com.longkd.delivery.ui.theme.Typography
+import com.longkd.delivery.presentation.common.SearchBar
+import com.longkd.delivery.presentation.theme.Background
+import com.longkd.delivery.presentation.theme.Border
+import com.longkd.delivery.presentation.theme.Primary
+import com.longkd.delivery.presentation.theme.TextSecondary
+import com.longkd.delivery.presentation.theme.Typography
 
 /**
  * @Author: longkd
@@ -44,15 +44,26 @@ import com.longkd.delivery.ui.theme.Typography
  */
 
 @Composable
-fun CategoryRoute(viewModel: CategoryViewModel = hiltViewModel()) {
+fun CategoryRoute(
+    viewModel: CategoryViewModel = hiltViewModel(),
+    onClickItem: (categoryId: String) -> Unit,
+) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    CategoryScreen(uiState = uiState) { searchQuery ->
-        viewModel.onSearchTextChange(searchQuery)
-    }
+    CategoryScreen(
+        uiState = uiState,
+        onValueSearchChange = { searchQuery ->
+            viewModel.onSearchTextChange(searchQuery)
+        },
+        onClickItem = onClickItem
+    )
 }
 
 @Composable
-internal fun CategoryScreen(uiState: CategoryUiState, onValueSearchChange: (String) -> Unit) {
+internal fun CategoryScreen(
+    uiState: CategoryUiState,
+    onValueSearchChange: (String) -> Unit,
+    onClickItem: (categoryId: String) -> Unit,
+) {
     val focusManager = LocalFocusManager.current
     Column(
         modifier = Modifier
@@ -76,12 +87,16 @@ internal fun CategoryScreen(uiState: CategoryUiState, onValueSearchChange: (Stri
         ) { searchQuery ->
             onValueSearchChange.invoke(searchQuery)
         }
-        ListCategory(listCategory = uiState.listData)
+        ListCategory(listCategory = uiState.listData, onClickItem = onClickItem)
     }
 }
 
 @Composable
-fun ListCategory(modifier: Modifier = Modifier, listCategory: List<Category>) {
+fun ListCategory(
+    modifier: Modifier = Modifier,
+    listCategory: List<Category>,
+    onClickItem: (categoryId: String) -> Unit,
+) {
     LazyVerticalGrid(
         modifier = Modifier.padding(top = 42.dp, start = 20.dp, end = 20.dp, bottom = 10.dp),
         columns = GridCells.Fixed(2),
@@ -94,6 +109,9 @@ fun ListCategory(modifier: Modifier = Modifier, listCategory: List<Category>) {
                     .fillMaxWidth()
                     .background(Color.White, shape = RoundedCornerShape(8.dp))
                     .border(1.dp, Border, RoundedCornerShape(8.dp))
+                    .clickable {
+                        onClickItem.invoke(it.id)
+                    }
             ) {
                 Image(
                     modifier = Modifier.fillMaxWidth(),
@@ -117,10 +135,4 @@ fun ListCategory(modifier: Modifier = Modifier, listCategory: List<Category>) {
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun CategoryRoutePreview() {
-    CategoryRoute()
 }

@@ -1,4 +1,4 @@
-package com.longkd.delivery.ui.category
+package com.longkd.delivery.presentation.category
 
 import androidx.compose.runtime.Stable
 import com.longkd.delivery.domain.Category

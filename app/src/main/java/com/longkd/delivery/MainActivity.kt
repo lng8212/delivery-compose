@@ -4,13 +4,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.longkd.delivery.ui.common.bottombar.DeliveryBottomNavigation
-import com.longkd.delivery.ui.theme.DeliveryTheme
+import com.longkd.delivery.presentation.common.bottombar.DeliveryBottomNavigation
+import com.longkd.delivery.presentation.theme.DeliveryTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,7 +28,11 @@ class MainActivity : ComponentActivity() {
                         DeliveryBottomNavigation(navController)
                     }
                 ) { innerPadding ->
-                    App(modifier = Modifier.padding(innerPadding), navController = navController)
+                    Box(modifier = Modifier.padding(innerPadding)) {
+                        App(
+                            navController = navController
+                        )
+                    }
                 }
             }
         }

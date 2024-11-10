@@ -1,4 +1,4 @@
-package com.longkd.delivery.ui.onboarding
+package com.longkd.delivery.presentation.onboarding
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

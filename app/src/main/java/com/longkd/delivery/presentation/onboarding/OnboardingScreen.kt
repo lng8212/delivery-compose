@@ -1,4 +1,4 @@
-package com.longkd.delivery.ui.onboarding
+package com.longkd.delivery.presentation.onboarding
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -21,12 +21,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.longkd.delivery.R
-import com.longkd.delivery.ui.theme.Background
-import com.longkd.delivery.ui.theme.Onboarding
-import com.longkd.delivery.ui.theme.Primary
-import com.longkd.delivery.ui.theme.PrimaryButton
-import com.longkd.delivery.ui.theme.TextSecondary
-import com.longkd.delivery.ui.theme.Typography
+import com.longkd.delivery.presentation.theme.Background
+import com.longkd.delivery.presentation.theme.Onboarding
+import com.longkd.delivery.presentation.theme.Primary
+import com.longkd.delivery.presentation.theme.PrimaryButton
+import com.longkd.delivery.presentation.theme.TextSecondary
+import com.longkd.delivery.presentation.theme.Typography
 
 /**
  * @Author: longkd

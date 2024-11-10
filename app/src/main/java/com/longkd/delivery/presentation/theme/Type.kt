@@ -1,4 +1,4 @@
-package com.longkd.delivery.ui.theme
+package com.longkd.delivery.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

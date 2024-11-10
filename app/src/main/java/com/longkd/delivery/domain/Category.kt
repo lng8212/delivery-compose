@@ -1,14 +1,23 @@
 package com.longkd.delivery.domain
 
+import android.os.Parcelable
 import androidx.annotation.DrawableRes
-import androidx.compose.runtime.Stable
+import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
+import java.util.UUID
 
 /**
  * @Author: longkd
  * @Since: 20:06 - 3/11/24
  */
-@Stable
-data class Category(@DrawableRes val image: Int, val name: String, val total: Int) {
+@Serializable
+@Parcelize
+data class Category(
+    val id: String = UUID.randomUUID().toString(),
+    @DrawableRes val image: Int,
+    val name: String,
+    val total: Int,
+) : Parcelable {
     fun isMatchWithQuery(queryString: String): Boolean {
         val matchResult = listOf(
             name, total.toString()

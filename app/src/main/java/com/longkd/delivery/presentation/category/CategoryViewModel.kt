@@ -1,4 +1,4 @@
-package com.longkd.delivery.ui.category
+package com.longkd.delivery.presentation.category
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

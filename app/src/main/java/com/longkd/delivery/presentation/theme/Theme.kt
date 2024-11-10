@@ -1,6 +1,5 @@
-package com.longkd.delivery.ui.theme
+package com.longkd.delivery.presentation.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
