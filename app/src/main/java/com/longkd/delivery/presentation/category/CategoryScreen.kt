@@ -46,7 +46,7 @@ import com.longkd.delivery.presentation.theme.Typography
 @Composable
 fun CategoryRoute(
     viewModel: CategoryViewModel = hiltViewModel(),
-    onClickItem: (categoryId: String) -> Unit,
+    onClickItem: (categoryId: String, name: String) -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     CategoryScreen(
@@ -62,7 +62,7 @@ fun CategoryRoute(
 internal fun CategoryScreen(
     uiState: CategoryUiState,
     onValueSearchChange: (String) -> Unit,
-    onClickItem: (categoryId: String) -> Unit,
+    onClickItem: (categoryId: String, name: String) -> Unit,
 ) {
     val focusManager = LocalFocusManager.current
     Column(
@@ -76,7 +76,7 @@ internal fun CategoryScreen(
             .background(Background)
     ) {
         Text(
-            modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 40.dp),
+            modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 54.dp),
             text = stringResource(R.string.text_categories),
             style = Typography.headlineLarge.copy(color = Primary)
         )
@@ -95,7 +95,7 @@ internal fun CategoryScreen(
 fun ListCategory(
     modifier: Modifier = Modifier,
     listCategory: List<Category>,
-    onClickItem: (categoryId: String) -> Unit,
+    onClickItem: (categoryId: String, name: String) -> Unit,
 ) {
     LazyVerticalGrid(
         modifier = Modifier.padding(top = 42.dp, start = 20.dp, end = 20.dp, bottom = 10.dp),
@@ -110,7 +110,7 @@ fun ListCategory(
                     .background(Color.White, shape = RoundedCornerShape(8.dp))
                     .border(1.dp, Border, RoundedCornerShape(8.dp))
                     .clickable {
-                        onClickItem.invoke(it.id)
+                        onClickItem.invoke(it.id, it.name)
                     }
             ) {
                 Image(

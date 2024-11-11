@@ -53,7 +53,7 @@ val listData = listOf(
     ),
 )
 
-enum class Unit(name: String) {
+enum class Unit(val value: String) {
     PIECE("piece"),
     KILOGRAM("kg"),
     GRAM("gram"),

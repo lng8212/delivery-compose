@@ -1,5 +1,7 @@
 package com.longkd.delivery
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -33,7 +35,7 @@ data object Cart : Route()
 data object Profile : Route()
 
 @Serializable
-data class DetailCategory(val categoryId: String) : Route()
+data class DetailCategory(val categoryId: String, val name: String) : Route()
 
 
 @Composable
@@ -55,8 +57,8 @@ fun App(navController: NavHostController) {
         }
 
         composable<Category> {
-            CategoryRoute { categoryId ->
-                navController.navigate(DetailCategory(categoryId)) {
+            CategoryRoute { categoryId, name ->
+                navController.navigate(DetailCategory(categoryId, name)) {
                     popUpTo(Category) {
                         saveState = true
                     }
@@ -66,8 +68,24 @@ fun App(navController: NavHostController) {
             }
         }
 
-        composable<DetailCategory> {
-            DetailCategoryRoute()
+        composable<DetailCategory>(
+            enterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(600)
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(600)
+                )
+            }
+
+        ) {
+            DetailCategoryRoute {
+                navController.popBackStack()
+            }
         }
 
         composable<Profile> {
