@@ -15,6 +15,9 @@ data class DetailCategory(
     @DrawableRes val image: Int,
     val price: Float,
     val unit: Unit,
+    val weightPerUnit: String,
+    val from: String,
+    val description: String,
 ) {
     fun isMatchWithQuery(queryString: String): Boolean {
         val matchResult = listOf(

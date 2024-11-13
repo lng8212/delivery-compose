@@ -17,6 +17,10 @@ class DetailCategoryRepositoryImpl @Inject constructor() : DetailCategoryReposit
             it.categoryId == categoryId
         })
     }
+
+    override suspend fun getItemById(itemId: String): DetailCategory? {
+        return listData.find { it.id == itemId }
+    }
 }
 
 val listData = listOf(
@@ -25,7 +29,11 @@ val listData = listOf(
         "1",
         "Boston Lettuce",
         R.drawable.ic_boston_lettuce,
-        1.10f, Unit.PIECE
+        1.10f,
+        Unit.PIECE,
+        "150g",
+        "Spain",
+        "A type of vegetables"
     ),
     DetailCategory(
         "2",
@@ -33,7 +41,10 @@ val listData = listOf(
         "Purple Cauliflower",
         R.drawable.ic_purpule_cauliflower,
         1.85f,
-        Unit.KILOGRAM
+        Unit.KILOGRAM,
+        "150g",
+        "Spain",
+        "A type of vegetables"
     ),
     DetailCategory(
         "3",
@@ -41,7 +52,10 @@ val listData = listOf(
         "Savoy Cabbage",
         R.drawable.ic_savoy_cabbage,
         1.45f,
-        Unit.KILOGRAM
+        Unit.KILOGRAM,
+        "150g",
+        "Spain",
+        "A type of vegetables"
     ),
     DetailCategory(
         "4",
@@ -49,7 +63,10 @@ val listData = listOf(
         "Savoy Cabbage",
         R.drawable.ic_savoy_cabbage,
         1.45f,
-        Unit.KILOGRAM
+        Unit.KILOGRAM,
+        "150g",
+        "Spain",
+        "A type of vegetables"
     ),
 )
 

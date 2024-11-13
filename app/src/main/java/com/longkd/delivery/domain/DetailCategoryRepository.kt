@@ -9,4 +9,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface DetailCategoryRepository {
     fun getAllItems(categoryId: String): Flow<List<DetailCategory>>
+    suspend fun getItemById(itemId: String): DetailCategory?
 }

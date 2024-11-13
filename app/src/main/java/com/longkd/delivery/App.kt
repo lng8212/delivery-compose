@@ -11,6 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.longkd.delivery.presentation.category.CategoryRoute
 import com.longkd.delivery.presentation.detail.DetailCategoryRoute
+import com.longkd.delivery.presentation.item.ItemRoute
 import com.longkd.delivery.presentation.onboarding.OnBoardingViewModel
 import com.longkd.delivery.presentation.onboarding.OnboardingScreen
 import kotlinx.serialization.Serializable
@@ -36,6 +37,9 @@ data object Profile : Route()
 
 @Serializable
 data class DetailCategory(val categoryId: String, val name: String) : Route()
+
+@Serializable
+data class Item(val itemId: String) : Route()
 
 
 @Composable
@@ -75,17 +79,43 @@ fun App(navController: NavHostController) {
                     animationSpec = tween(600)
                 )
             },
-            exitTransition = {
+            popExitTransition = {
                 slideOutOfContainer(
                     AnimatedContentTransitionScope.SlideDirection.Right,
                     animationSpec = tween(600)
                 )
+            },
+            popEnterTransition = {
+                null
             }
-
         ) {
-            DetailCategoryRoute {
-                navController.popBackStack()
+            DetailCategoryRoute(
+                onBack = {
+                    navController.popBackStack()
+                },
+                onClickItem = {
+                    navController.navigate(Item(it))
+                })
+        }
+
+        composable<Item>(
+            enterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(600)
+                )
+            },
+            popExitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(600)
+                )
+            },
+            popEnterTransition = {
+                null
             }
+        ) {
+            ItemRoute()
         }
 
         composable<Profile> {

@@ -53,6 +53,7 @@ import com.longkd.delivery.presentation.theme.Typography
 fun DetailCategoryRoute(
     viewModel: DetailCategoryViewModel = hiltViewModel<DetailCategoryViewModel>(),
     onBack: () -> Unit,
+    onClickItem: (String) -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     DetailCategoryScreen(
@@ -63,7 +64,9 @@ fun DetailCategoryRoute(
         },
         onBack = {
             onBack.invoke()
-        })
+        },
+        onClickItem = onClickItem
+    )
 }
 
 @Composable
@@ -72,6 +75,7 @@ fun DetailCategoryScreen(
     name: String,
     onValueSearchChange: (String) -> Unit,
     onBack: () -> Unit,
+    onClickItem: (String) -> Unit,
 ) {
     val focusManager = LocalFocusManager.current
     Box(
@@ -112,14 +116,18 @@ fun DetailCategoryScreen(
             ) { searchQuery ->
                 onValueSearchChange.invoke(searchQuery)
             }
-            ListCategoryDetail(listItem = listItem)
+            ListCategoryDetail(listItem = listItem, onClickItem = onClickItem)
         }
     }
 }
 
 
 @Composable
-fun ListCategoryDetail(modifier: Modifier = Modifier, listItem: List<DetailCategory>) {
+fun ListCategoryDetail(
+    modifier: Modifier = Modifier,
+    listItem: List<DetailCategory>,
+    onClickItem: (String) -> Unit,
+) {
     LazyColumn(
         modifier = Modifier.padding(
             top = 42.dp,
@@ -130,15 +138,21 @@ fun ListCategoryDetail(modifier: Modifier = Modifier, listItem: List<DetailCateg
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(items = listItem, key = { it.id }) { item ->
-            CategoryDetailItem(item = item)
+            CategoryDetailItem(item = item, onClickItem = onClickItem)
         }
     }
 
 }
 
 @Composable
-fun CategoryDetailItem(modifier: Modifier = Modifier, item: DetailCategory) {
-    Row(modifier = modifier.padding(vertical = 16.dp)) {
+fun CategoryDetailItem(
+    modifier: Modifier = Modifier,
+    item: DetailCategory,
+    onClickItem: (String) -> Unit,
+) {
+    Row(modifier = modifier
+        .padding(vertical = 16.dp)
+        .clickable { onClickItem.invoke(item.id) }) {
         Image(
             modifier = Modifier
                 .weight(1f)
