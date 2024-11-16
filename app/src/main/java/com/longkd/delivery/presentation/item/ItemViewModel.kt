@@ -5,8 +5,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import com.longkd.delivery.Item
-import com.longkd.delivery.domain.DetailCategoryRepository
+import com.longkd.delivery.data.di.Dispatcher
+import com.longkd.delivery.data.di.DispatcherType
+import com.longkd.delivery.data.mapper.toItem
+import com.longkd.delivery.domain.ItemRepository
+import com.longkd.delivery.domain.detailcategory.DetailCategory
+import com.longkd.delivery.domain.detailcategory.DetailCategoryRepository
+import com.longkd.delivery.util.SnackbarController
+import com.longkd.delivery.util.SnackbarEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -21,6 +29,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ItemViewModel @Inject constructor(
     detailCategoryRepository: DetailCategoryRepository,
+    @Dispatcher(DispatcherType.IO) private val ioDispatcher: CoroutineDispatcher,
+    private val itemRepository: ItemRepository,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(ItemUIState())
@@ -34,6 +44,15 @@ class ItemViewModel @Inject constructor(
                         savedStateHandle.toRoute<Item>().itemId
                     )
                 )
+            }
+        }
+    }
+
+    fun insertItem(item: DetailCategory) {
+        viewModelScope.launch(ioDispatcher) {
+            val result = itemRepository.addOrUpdateItem(item.id.toInt(), item.toItem())
+            if (result != -1L) {
+                SnackbarController.sendEvent(SnackbarEvent("Insert successfully: ${item.name}"))
             }
         }
     }

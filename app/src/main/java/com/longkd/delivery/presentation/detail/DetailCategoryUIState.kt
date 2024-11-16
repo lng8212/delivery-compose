@@ -1,7 +1,7 @@
 package com.longkd.delivery.presentation.detail
 
 import androidx.compose.runtime.Stable
-import com.longkd.delivery.domain.DetailCategory
+import com.longkd.delivery.domain.detailcategory.DetailCategory
 
 /**
  * @Author: longkd

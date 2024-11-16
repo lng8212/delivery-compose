@@ -1,4 +1,4 @@
-package com.longkd.delivery.domain
+package com.longkd.delivery.domain.category
 
 import android.content.Context
 import kotlinx.coroutines.flow.Flow

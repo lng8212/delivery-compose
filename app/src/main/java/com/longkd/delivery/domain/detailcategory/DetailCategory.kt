@@ -1,4 +1,4 @@
-package com.longkd.delivery.domain
+package com.longkd.delivery.domain.detailcategory
 
 import androidx.annotation.DrawableRes
 import com.longkd.delivery.data.Unit

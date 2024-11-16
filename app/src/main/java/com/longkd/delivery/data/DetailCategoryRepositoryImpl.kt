@@ -1,8 +1,8 @@
 package com.longkd.delivery.data
 
 import com.longkd.delivery.R
-import com.longkd.delivery.domain.DetailCategory
-import com.longkd.delivery.domain.DetailCategoryRepository
+import com.longkd.delivery.domain.detailcategory.DetailCategory
+import com.longkd.delivery.domain.detailcategory.DetailCategoryRepository
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 

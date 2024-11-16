@@ -1,4 +1,4 @@
-package com.longkd.delivery.domain
+package com.longkd.delivery.domain.category
 
 import android.os.Parcelable
 import androidx.annotation.DrawableRes

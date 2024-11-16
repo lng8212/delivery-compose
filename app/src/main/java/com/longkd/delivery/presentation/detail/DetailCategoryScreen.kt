@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.longkd.delivery.R
-import com.longkd.delivery.domain.DetailCategory
+import com.longkd.delivery.domain.detailcategory.DetailCategory
 import com.longkd.delivery.presentation.common.SearchBar
 import com.longkd.delivery.presentation.theme.Background
 import com.longkd.delivery.presentation.theme.Border
@@ -65,7 +65,10 @@ fun DetailCategoryRoute(
         onBack = {
             onBack.invoke()
         },
-        onClickItem = onClickItem
+        onClickItem = onClickItem,
+        onAddToCart = {
+            viewModel.insertItem(it)
+        }
     )
 }
 
@@ -76,6 +79,7 @@ fun DetailCategoryScreen(
     onValueSearchChange: (String) -> Unit,
     onBack: () -> Unit,
     onClickItem: (String) -> Unit,
+    onAddToCart: (DetailCategory) -> Unit,
 ) {
     val focusManager = LocalFocusManager.current
     Box(
@@ -116,7 +120,11 @@ fun DetailCategoryScreen(
             ) { searchQuery ->
                 onValueSearchChange.invoke(searchQuery)
             }
-            ListCategoryDetail(listItem = listItem, onClickItem = onClickItem)
+            ListCategoryDetail(
+                listItem = listItem,
+                onClickItem = onClickItem,
+                onAddToCart = onAddToCart
+            )
         }
     }
 }
@@ -127,6 +135,7 @@ fun ListCategoryDetail(
     modifier: Modifier = Modifier,
     listItem: List<DetailCategory>,
     onClickItem: (String) -> Unit,
+    onAddToCart: (DetailCategory) -> Unit,
 ) {
     LazyColumn(
         modifier = Modifier.padding(
@@ -138,7 +147,9 @@ fun ListCategoryDetail(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(items = listItem, key = { it.id }) { item ->
-            CategoryDetailItem(item = item, onClickItem = onClickItem)
+            CategoryDetailItem(item = item, onClickItem = onClickItem, onAddToCart = {
+                onAddToCart(item)
+            })
         }
     }
 
@@ -149,6 +160,7 @@ fun CategoryDetailItem(
     modifier: Modifier = Modifier,
     item: DetailCategory,
     onClickItem: (String) -> Unit,
+    onAddToCart: () -> Unit,
 ) {
     Row(modifier = modifier
         .padding(vertical = 16.dp)
@@ -194,7 +206,9 @@ fun CategoryDetailItem(
                 IconButton(modifier = Modifier
                     .background(PrimaryButton, RoundedCornerShape(10.dp))
                     .padding(horizontal = 20.dp, vertical = 6.dp),
-                    onClick = { /*TODO*/ }) {
+                    onClick = {
+                        onAddToCart.invoke()
+                    }) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_shopping_cart),
                         contentDescription = null

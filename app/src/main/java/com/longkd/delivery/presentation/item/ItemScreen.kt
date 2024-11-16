@@ -32,7 +32,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.longkd.delivery.R
 import com.longkd.delivery.data.Unit
-import com.longkd.delivery.domain.DetailCategory
+import com.longkd.delivery.domain.detailcategory.DetailCategory
 import com.longkd.delivery.presentation.theme.Border
 import com.longkd.delivery.presentation.theme.Primary
 import com.longkd.delivery.presentation.theme.PrimaryButton
@@ -48,11 +48,19 @@ import com.longkd.delivery.presentation.theme.WeightPerUnit
 @Composable
 fun ItemRoute(viewModel: ItemViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    uiState.detailCategory?.let { ItemScreen(detailCategory = it) }
+    uiState.detailCategory?.let {
+        ItemScreen(detailCategory = it, onInsertItem = { item ->
+            viewModel.insertItem(item)
+        })
+    }
 }
 
 @Composable
-fun ItemScreen(modifier: Modifier = Modifier, detailCategory: DetailCategory) {
+fun ItemScreen(
+    modifier: Modifier = Modifier,
+    detailCategory: DetailCategory,
+    onInsertItem: (DetailCategory) -> kotlin.Unit,
+) {
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             modifier = Modifier.fillMaxWidth(),
@@ -127,7 +135,7 @@ fun ItemScreen(modifier: Modifier = Modifier, detailCategory: DetailCategory) {
                     .weight(1f)
                     .background(PrimaryButton, RoundedCornerShape(10.dp))
                     .padding(horizontal = 20.dp, vertical = 6.dp),
-                    onClick = { /*TODO*/ }) {
+                    onClick = { onInsertItem.invoke(detailCategory) }) {
                     Row {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_shopping_cart),
@@ -164,6 +172,9 @@ fun ItemScreenPreview() {
             "150g",
             "Spain",
             "A type of vegetables"
-        )
+        ),
+        onInsertItem = {
+
+        }
     )
 }

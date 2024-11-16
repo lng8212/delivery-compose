@@ -3,7 +3,7 @@ package com.longkd.delivery.presentation.category
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.longkd.delivery.domain.CategoryRepository
+import com.longkd.delivery.domain.category.CategoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow

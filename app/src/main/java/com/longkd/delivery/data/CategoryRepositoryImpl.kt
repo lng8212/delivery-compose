@@ -2,8 +2,8 @@ package com.longkd.delivery.data
 
 import android.content.Context
 import com.longkd.delivery.R
-import com.longkd.delivery.domain.Category
-import com.longkd.delivery.domain.CategoryRepository
+import com.longkd.delivery.domain.category.Category
+import com.longkd.delivery.domain.category.CategoryRepository
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 

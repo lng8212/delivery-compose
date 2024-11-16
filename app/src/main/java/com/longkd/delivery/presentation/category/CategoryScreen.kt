@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.longkd.delivery.R
-import com.longkd.delivery.domain.Category
+import com.longkd.delivery.domain.category.Category
 import com.longkd.delivery.presentation.common.SearchBar
 import com.longkd.delivery.presentation.theme.Background
 import com.longkd.delivery.presentation.theme.Border
