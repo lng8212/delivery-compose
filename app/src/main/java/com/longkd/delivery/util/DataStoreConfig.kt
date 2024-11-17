@@ -1,4 +1,4 @@
-package com.longkd.delivery.data.util
+package com.longkd.delivery.util
 
 import android.content.Context
 import androidx.datastore.core.DataStore

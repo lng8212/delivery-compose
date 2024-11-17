@@ -1,7 +1,7 @@
 package com.longkd.delivery.domain.detailcategory
 
 import androidx.annotation.DrawableRes
-import com.longkd.delivery.data.Unit
+import com.longkd.delivery.data.repository.Unit
 
 /**
  * @Author: longkd

@@ -7,9 +7,9 @@ import androidx.navigation.toRoute
 import com.longkd.delivery.data.di.Dispatcher
 import com.longkd.delivery.data.di.DispatcherType
 import com.longkd.delivery.data.mapper.toItem
-import com.longkd.delivery.domain.ItemRepository
 import com.longkd.delivery.domain.detailcategory.DetailCategory
 import com.longkd.delivery.domain.detailcategory.DetailCategoryRepository
+import com.longkd.delivery.domain.item.ItemRepository
 import com.longkd.delivery.util.SnackbarController
 import com.longkd.delivery.util.SnackbarEvent
 import dagger.hilt.android.lifecycle.HiltViewModel

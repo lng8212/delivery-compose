@@ -9,7 +9,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.longkd.delivery.presentation.cart.CartScreen
+import com.longkd.delivery.presentation.cart.CartRoute
 import com.longkd.delivery.presentation.category.CategoryRoute
 import com.longkd.delivery.presentation.detail.DetailCategoryRoute
 import com.longkd.delivery.presentation.item.ItemRoute
@@ -124,7 +124,7 @@ fun App(navController: NavHostController) {
         }
 
         composable<Cart> {
-            CartScreen()
+            CartRoute()
         }
     }
 }

@@ -2,7 +2,7 @@ package com.longkd.delivery.presentation.onboarding
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.longkd.delivery.data.util.DataStoreUtils
+import com.longkd.delivery.util.DataStoreUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

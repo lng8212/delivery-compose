@@ -1,10 +1,10 @@
-package com.longkd.delivery.data
+package com.longkd.delivery.data.repository
 
 import com.longkd.delivery.data.database.ItemDao
 import com.longkd.delivery.data.mapper.toDto
 import com.longkd.delivery.data.mapper.toItem
-import com.longkd.delivery.domain.Item
-import com.longkd.delivery.domain.ItemRepository
+import com.longkd.delivery.domain.item.Item
+import com.longkd.delivery.domain.item.ItemRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

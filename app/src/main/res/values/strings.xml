@@ -11,4 +11,5 @@
     <string name="text_sweets">Sweets</string>
     <string name="text_noodle">Noodle</string>
     <string name="text_drinks">Drinks</string>
+    <string name="text_checkout">Checkout</string>
 </resources>

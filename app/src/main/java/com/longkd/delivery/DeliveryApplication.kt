@@ -1,7 +1,7 @@
 package com.longkd.delivery
 
 import android.app.Application
-import com.longkd.delivery.data.util.DataStoreUtils
+import com.longkd.delivery.util.DataStoreUtils
 import dagger.hilt.android.HiltAndroidApp
 
 /**

@@ -1,4 +1,4 @@
-package com.longkd.delivery.data.util
+package com.longkd.delivery.util
 
 import android.content.Context
 import android.util.Log
@@ -26,8 +26,8 @@ object DataStoreUtils {
 
 
     fun isFirstInit(): Flow<Boolean> {
-        return if (::dataStore.isInitialized) {
-            dataStore.readBooleanFlow(IS_FIRST_INIT)
+        return if (DataStoreUtils::dataStore.isInitialized) {
+            DataStoreConfig.readBooleanFlow(IS_FIRST_INIT)
         } else {
             flow {
                 emit(false)
@@ -36,14 +36,14 @@ object DataStoreUtils {
     }
 
     fun isFirstInitResult(): Boolean {
-        return if (::dataStore.isInitialized) {
-            dataStore.readBooleanData(IS_FIRST_INIT, default = true)
+        return if (DataStoreUtils::dataStore.isInitialized) {
+            DataStoreConfig.readBooleanData(IS_FIRST_INIT, default = true)
         } else {
             false
         }
     }
 
     suspend fun setFirstInit(isFirstInit: Boolean) {
-        dataStore.saveBooleanData(IS_FIRST_INIT, isFirstInit)
+        DataStoreConfig.saveBooleanData(IS_FIRST_INIT, isFirstInit)
     }
 }

@@ -1,4 +1,4 @@
-package com.longkd.delivery.data
+package com.longkd.delivery.data.repository
 
 import com.longkd.delivery.R
 import com.longkd.delivery.domain.detailcategory.DetailCategory

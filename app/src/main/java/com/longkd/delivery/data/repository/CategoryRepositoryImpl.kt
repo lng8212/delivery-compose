@@ -1,4 +1,4 @@
-package com.longkd.delivery.data
+package com.longkd.delivery.data.repository
 
 import android.content.Context
 import com.longkd.delivery.R

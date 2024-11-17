@@ -1,4 +1,4 @@
-package com.longkd.delivery.domain
+package com.longkd.delivery.domain.item
 
 import kotlinx.coroutines.flow.Flow
 

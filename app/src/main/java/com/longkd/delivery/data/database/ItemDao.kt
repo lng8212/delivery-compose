@@ -5,7 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.longkd.delivery.data.database.model.ItemDto
-import com.longkd.delivery.domain.Item
+import com.longkd.delivery.domain.item.Item
 import kotlinx.coroutines.flow.Flow
 
 /**

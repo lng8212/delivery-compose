@@ -1,11 +1,13 @@
 package com.longkd.delivery.data.di
 
-import com.longkd.delivery.data.CategoryRepositoryImpl
-import com.longkd.delivery.data.DetailCategoryRepositoryImpl
-import com.longkd.delivery.data.ItemRepositoryImpl
-import com.longkd.delivery.domain.ItemRepository
+import com.longkd.delivery.data.repository.CategoryRepositoryImpl
+import com.longkd.delivery.data.repository.DetailCategoryRepositoryImpl
+import com.longkd.delivery.data.repository.ItemRepositoryImpl
+import com.longkd.delivery.data.repository.UserRepositoryImpl
 import com.longkd.delivery.domain.category.CategoryRepository
 import com.longkd.delivery.domain.detailcategory.DetailCategoryRepository
+import com.longkd.delivery.domain.item.ItemRepository
+import com.longkd.delivery.domain.user.UserRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -27,4 +29,7 @@ interface RepositoryModule {
 
     @Binds
     fun bindItemRepository(repositoryImpl: ItemRepositoryImpl): ItemRepository
+
+    @Binds
+    fun bindUserRepository(repositoryImpl: UserRepositoryImpl): UserRepository
 }
