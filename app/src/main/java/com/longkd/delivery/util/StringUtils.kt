@@ -12,4 +12,9 @@ object StringUtils {
             .chunked(4)
             .joinToString(" ")
     }
+
+    fun cardStyle(cardNumber: String): String {
+        if (cardNumber.length <= 4) return cardNumber
+        return cardNumber.chunked(4).joinToString(" ")
+    }
 }

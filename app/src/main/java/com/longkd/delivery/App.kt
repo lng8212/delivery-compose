@@ -9,6 +9,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.longkd.delivery.presentation.card.CardRoute
 import com.longkd.delivery.presentation.cart.CartRoute
 import com.longkd.delivery.presentation.category.CategoryRoute
 import com.longkd.delivery.presentation.detail.DetailCategoryRoute
@@ -41,6 +42,9 @@ data class DetailCategory(val categoryId: String, val name: String) : Route()
 
 @Serializable
 data class Item(val itemId: String) : Route()
+
+@Serializable
+data class Card(val id: String) : Route()
 
 
 @Composable
@@ -124,7 +128,31 @@ fun App(navController: NavHostController) {
         }
 
         composable<Cart> {
-            CartRoute()
+            CartRoute { cardNumber ->
+                navController.navigate(Card(cardNumber))
+            }
+        }
+
+        composable<Card>(
+            enterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(600)
+                )
+            },
+            popExitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(600)
+                )
+            },
+            popEnterTransition = {
+                null
+            }
+        ) {
+            CardRoute {
+                navController.popBackStack()
+            }
         }
     }
 }

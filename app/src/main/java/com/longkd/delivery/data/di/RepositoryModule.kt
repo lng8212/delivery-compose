@@ -1,9 +1,11 @@
 package com.longkd.delivery.data.di
 
+import com.longkd.delivery.data.repository.CardRepositoryImpl
 import com.longkd.delivery.data.repository.CategoryRepositoryImpl
 import com.longkd.delivery.data.repository.DetailCategoryRepositoryImpl
 import com.longkd.delivery.data.repository.ItemRepositoryImpl
 import com.longkd.delivery.data.repository.UserRepositoryImpl
+import com.longkd.delivery.domain.card.CardRepository
 import com.longkd.delivery.domain.category.CategoryRepository
 import com.longkd.delivery.domain.detailcategory.DetailCategoryRepository
 import com.longkd.delivery.domain.item.ItemRepository
@@ -32,4 +34,7 @@ interface RepositoryModule {
 
     @Binds
     fun bindUserRepository(repositoryImpl: UserRepositoryImpl): UserRepository
+
+    @Binds
+    fun bindCardRepository(repositoryImpl: CardRepositoryImpl): CardRepository
 }

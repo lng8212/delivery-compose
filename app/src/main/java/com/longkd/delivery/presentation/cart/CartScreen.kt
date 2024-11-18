@@ -40,7 +40,11 @@ import com.longkd.delivery.util.StringUtils
  */
 
 @Composable
-fun CartRoute(modifier: Modifier = Modifier, viewModel: CartViewModel = hiltViewModel()) {
+fun CartRoute(
+    modifier: Modifier = Modifier,
+    viewModel: CartViewModel = hiltViewModel(),
+    onNavigateCard: (String) -> Unit,
+) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     uiState.userData?.let {
         CartScreen(
@@ -52,7 +56,9 @@ fun CartRoute(modifier: Modifier = Modifier, viewModel: CartViewModel = hiltView
             },
             onClickSwitch = {
                 viewModel.updateContactState()
-            })
+            },
+            onChangeClick = onNavigateCard
+        )
     }
 }
 
@@ -64,6 +70,7 @@ fun CartScreen(
     currentState: Boolean,
     onClickItem: (DeliveryOptions) -> Unit,
     onClickSwitch: () -> Unit,
+    onChangeClick: (id: String) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -75,7 +82,12 @@ fun CartScreen(
             text = stringResource(R.string.text_checkout),
             style = Typography.headlineLarge.copy(color = Primary)
         )
-        PaymentRow(modifier = Modifier.padding(top = 20.dp), name = "Payment method")
+        PaymentRow(
+            modifier = Modifier.padding(top = 20.dp),
+            name = "Payment method",
+            onChangeClick = {
+                onChangeClick.invoke(user.paymentCard)
+            })
         PaymentRowDetail(
             modifier = Modifier.padding(top = 16.dp),
             icon = R.drawable.ic_credit_card,
@@ -217,5 +229,6 @@ fun CartScreenPreview() {
         onClickItem = {},
         onClickSwitch = {},
         selectedOption = DeliveryOptions.BY_DRONE,
+        onChangeClick = {}
     )
 }
