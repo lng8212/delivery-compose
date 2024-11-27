@@ -21,3 +21,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "Delivery"
 include(":app")
+include(":data")
+include(":domain")
+include(":presentation")
+include(":core")
+include(":core:utils")
