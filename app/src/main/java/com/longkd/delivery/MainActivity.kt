@@ -16,10 +16,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.longkd.delivery.presentation.common.bottombar.DeliveryBottomNavigation
-import com.longkd.delivery.presentation.theme.DeliveryTheme
-import com.longkd.delivery.util.ObserveAsEvents
-import com.longkd.delivery.util.SnackbarController
+import com.longkd.presentation.common.bottombar.DeliveryBottomNavigation
+import com.longkd.presentation.theme.DeliveryTheme
+import com.longkd.utils.ObserveAsEvents
+import com.longkd.utils.SnackbarController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -59,7 +59,9 @@ class MainActivity : ComponentActivity() {
                         )
                     },
                     bottomBar = {
-                        DeliveryBottomNavigation(navController)
+                        DeliveryBottomNavigation(
+                            navController
+                        )
                     }
                 ) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)) {

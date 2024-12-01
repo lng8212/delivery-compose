@@ -9,43 +9,25 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.longkd.delivery.presentation.card.CardRoute
-import com.longkd.delivery.presentation.cart.CartRoute
-import com.longkd.delivery.presentation.category.CategoryRoute
-import com.longkd.delivery.presentation.detail.DetailCategoryRoute
-import com.longkd.delivery.presentation.item.ItemRoute
-import com.longkd.delivery.presentation.onboarding.OnBoardingViewModel
-import com.longkd.delivery.presentation.onboarding.OnboardingScreen
-import kotlinx.serialization.Serializable
+import com.longkd.presentation.Card
+import com.longkd.presentation.Cart
+import com.longkd.presentation.Category
+import com.longkd.presentation.DetailCategory
+import com.longkd.presentation.Item
+import com.longkd.presentation.OnBoarding
+import com.longkd.presentation.Profile
+import com.longkd.presentation.card.CardRoute
+import com.longkd.presentation.cart.CartRoute
+import com.longkd.presentation.category.CategoryRoute
+import com.longkd.presentation.detail.DetailCategoryRoute
+import com.longkd.presentation.item.ItemRoute
+import com.longkd.presentation.onboarding.OnBoardingViewModel
+import com.longkd.presentation.onboarding.OnboardingScreen
 
 /**
  * @Author: longkd
  * @Since: 23:10 - 30/10/24
  */
-
-sealed class Route
-
-@Serializable
-data object OnBoarding : Route()
-
-@Serializable
-data object Category : Route()
-
-@Serializable
-data object Cart : Route()
-
-@Serializable
-data object Profile : Route()
-
-@Serializable
-data class DetailCategory(val categoryId: String, val name: String) : Route()
-
-@Serializable
-data class Item(val itemId: String) : Route()
-
-@Serializable
-data class Card(val id: String) : Route()
-
 
 @Composable
 fun App(navController: NavHostController) {

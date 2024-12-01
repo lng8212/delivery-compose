@@ -15,7 +15,13 @@ activityCompose = "1.9.1"
 composeBom = "2024.04.01"
 navigationCompose = "2.8.3"
 roomRuntime = "2.6.1"
-
+appcompat = "1.7.0"
+material = "1.12.0"
+lifecycleRuntimeComposeAndroid = "2.8.7"
+androidGradlePlugin = "8.3.1"
+androidxComposeCompiler = "1.5.1"
+ksp = "2.0.21-1.0.27"
+kotlin-serialization = "2.0.21"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
@@ -41,9 +47,26 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-lifecycle-runtime-compose-android = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose-android", version.ref = "lifecycleRuntimeComposeAndroid" }
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 
 [plugins]
+devetools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
+kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-serialization" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+starter-android-application = { id = "starter.android.application", version = "unspecified" }
+starter-android-application-compose = { id = "starter.android.application.compose", version = "unspecified" }
+starter-android-library = { id = "starter.android.library", version = "unspecified" }
+starter-android-library-compose = { id = "starter.android.library.compose", version = "unspecified" }
+starter-android-feature = { id = "starter.android.feature", version = "unspecified" }
+starter-android-hilt = { id = "starter.android.hilt", version = "unspecified" }
+starter-android-domain = { id = "starter.android.domain", version = "unspecified" }
+
 
