@@ -66,11 +66,11 @@ delivery-compose/
 ---
 
 ## 📸 Screenshots
-![image](https://github.com/user-attachments/assets/f5b0b9a3-c80f-4a3a-99d0-aac602906bcf)
-![image](https://github.com/user-attachments/assets/a2abd931-6151-4eed-8bf7-aac9be6d58a4)
-![image](https://github.com/user-attachments/assets/ebc2f9bf-c1cb-455f-b4cb-e0d492a9c9f3)
-![image](https://github.com/user-attachments/assets/8322efa5-c8ff-44b1-af0a-442658f21c1a)
-![image](https://github.com/user-attachments/assets/dc0bc7aa-7aab-49ac-8b69-320b1359fb53)
+<img src="https://github.com/user-attachments/assets/f5b0b9a3-c80f-4a3a-99d0-aac602906bcf" width="300">
+<img src="https://github.com/user-attachments/assets/a2abd931-6151-4eed-8bf7-aac9be6d58a4" width="300">
+<img src="https://github.com/user-attachments/assets/ebc2f9bf-c1cb-455f-b4cb-e0d492a9c9f3" width="300">
+<img src="https://github.com/user-attachments/assets/8322efa5-c8ff-44b1-af0a-442658f21c1a" width="300">
+<img src="https://github.com/user-attachments/assets/dc0bc7aa-7aab-49ac-8b69-320b1359fb53" width="300">
 
 
 ---
